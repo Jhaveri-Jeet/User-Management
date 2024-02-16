@@ -9,13 +9,13 @@ This is a Laravel project designed for [purpose].
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/laravel-project.git
+    https://github.com/Jhaveri-Jeet/User-Management.git
     ```
 
 2. Navigate into the project directory:
 
     ```bash
-    cd laravel-project
+    cd User-Management
     ```
 
 3. Install PHP dependencies using Composer:
@@ -24,29 +24,27 @@ This is a Laravel project designed for [purpose].
     composer install
     ```
 
+4. Copy the environment file:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+5. Generate the application key:
+
+    ```bash
+    php artisan key:generate
+    ```
 
 ## Database Setup
 
-1. Create a new database for the project.
-
-2. Update the `.env` file with your database credentials:
-
-    ```dotenv
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=your_database_name
-    DB_USERNAME=your_database_username
-    DB_PASSWORD=your_database_password
-    ```
-
-3. Run the database migrations to create tables:
+1. Run the database migrations to create tables:
 
     ```bash
     php artisan migrate
     ```
 
-4. (Optional) Seed the database with default data:
+2. Seed the database with default data:
 
     ```bash
     php artisan db:seed --class=DefaultAdminUserSeeder
