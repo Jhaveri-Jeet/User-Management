@@ -1,5 +1,7 @@
 # Laravel Project
 
+![image](https://github.com/Jhaveri-Jeet/User-Management/assets/114752089/b187a0f3-6da0-4a37-ac2f-134c8dc2cc14)
+
 This is a Laravel project designed for [purpose].
 
 ## Installation
