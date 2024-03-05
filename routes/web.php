@@ -15,7 +15,7 @@ Route::middleware([UserAuth::class])->group(function () {
     Route::view('/volunteer', 'pages.volunteer');
     Route::view('/doner', 'pages.doner');
     Route::view('/renter', 'pages.renter');
-    
+
     // Users Routes
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/addUser', [UserController::class, 'addUserPage']);
