@@ -44,150 +44,98 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Nick Name</th>
-                                        <th>Address 1</th>
-                                        <th>Address 2</th>
+                                        <th>Name</th>
+                                        {{--  <th>Last Name</th>  --}}
+                                        {{--  <th>Nick Name</th>  --}}
+                                        {{--  <th>Address 1</th>  --}}
+                                        {{--  <th>Address 2</th>
                                         <th>Area</th>
-                                        <th>Pincode</th>
-                                        <th>City</th>
-                                        <th>State</th>
-                                        <th>Country</th>
+                                        <th>Pincode</th>  --}}
+                                        {{--  <th>City</th>  --}}
+                                        {{--  <th>State</th>  --}}
+                                        {{--  <th>Country</th>  --}}
                                         <th>Email</th>
-                                        <th>Second Number</th>
+                                        {{--  <th>Second Number</th>  --}}
                                         <th>Birthdate</th>
-                                        <th>Anniversary Date</th>
-                                        <th>Spouse First Name</th>
+                                        {{--  <th>Anniversary Date</th>  --}}
+                                        {{--  <th>Spouse First Name</th>
                                         <th>Spouse Last Name</th>
                                         <th>Spouse Birthdate</th>
                                         <th>Spouse Nickname</th>
                                         <th>Mobile Verified</th>
-                                        <th>Email Verified</th>
-                                        <th>User Status</th>
-                                        <th>Optin Status</th>
-                                        <th>Reference By</th>
-                                        <th>Created By</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
-                                        <th>Update</th>
-                                        <th>Delete</th>
+                                        <th>Email Verified</th>  --}}
+                                        {{--  <th>User Status</th>
+                                        <th>Optin Status</th>  --}}
+                                        {{--  <th>Reference By</th>  --}}
+                                        {{--  <th>Created By</th>  --}}
+                                        {{--  <th>Created At</th>  --}}
+                                        {{--  <th>Updated At</th>  --}}
+                                        <th colspan="3" class="text-center">Actions</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr id="updateUserRow_{{ $user->id }}">
-                                            <td><input type="text" value="{{ $loop->index + 1 }}" disabled
-                                                    class="inputIndex"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->id }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->first_name }}" disabled
-                                                    class="inputFirstName"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->first_name. "  " .$user->last_name }}</td>
                                             </td>
-                                            <td><input type="text" value="{{ $user->last_name }}" disabled
-                                                    class="inputLastName"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            {{--  <td>{{ $user->last_name }}  --}}
                                             </td>
-                                            <td><input type="text" value="{{ $user->nick_name }}" disabled
-                                                    class="inputNickName"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            {{--  <td>{{ $user->nick_name }}
+                                            </td>  --}}
+                                            {{--  <td>{{ $user->address_1 }}
+                                            </td>  --}}
+                                            {{--  <td>{{ $user->address_2 }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->address_1 }}" disabled
-                                                    class="inputAddress1"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->area }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->address_2 }}" disabled
-                                                    class="inputAddress2"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->pincode }}  --}}
+                                            {{--  </td>  --}}
+                                            {{--  <td>{{ $user->city }}
+                                            </td>  --}}
+                                            {{--  <td>{{ $user->state }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->area }}" disabled
-                                                    class="inputArea"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->country }}
+                                            </td>  --}}
+                                            <td>{{ $user->email }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->pincode }}" disabled
-                                                    class="inputPincode"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            {{--  <td>{{ $user->second_number }}
+                                            </td>  --}}
+                                            <td>{{ $user->birthdate }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->city }}" disabled
-                                                    class="inputCity"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            {{--  <td>{{ $user->anniversary_date }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->state }}" disabled
-                                                    class="inputState"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->spouse_first_name }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->country }}" disabled
-                                                    class="inputCountry"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->spouse_last_name }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->email }}" disabled
-                                                    class="inputEmail"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->spouse_birthdate }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->second_number }}" disabled
-                                                    class="inputSecondNumber"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->spouse_nick_name }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->birthdate }}" disabled
-                                                    class="inputBirthdate"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->mobile_verified }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->anniversary_date }}" disabled
-                                                    class="inputAnniversaryDate"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td{{ $user->email_verified }}
+                                            </td>  --}}
+                                            {{--  <td>{{ $user->user_status }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->spouse_first_name }}" disabled
-                                                    class="inputSpouseFirstName"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->optin_status }}
+                                            </td>  --}}
+                                            {{--  <td>{{ $user->reference_by }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->spouse_last_name }}" disabled
-                                                    class="inputSpouseLastName"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->created_by }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->spouse_birthdate }}" disabled
-                                                    class="inputSpouseBirthdate"
-                                                    style="background-color: transparent; border: none; color: black">
+                                            <td>{{ $user->created_at }}
                                             </td>
-                                            <td><input type="text" value="{{ $user->spouse_nick_name }}" disabled
-                                                    class="inputSpouseNickName"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->mobile_verified }}" disabled
-                                                    class="inputMobileVerified"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->email_verified }}" disabled
-                                                    class="inputEmailVerified"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->user_status }}" disabled
-                                                    class="inputUserStatus"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->optin_status }}" disabled
-                                                    class="inputOptinStatus"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->reference_by }}" disabled
-                                                    class="inputReferenceBy"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->created_by }}" disabled
-                                                    class="inputCreatedBy"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->created_at }}" disabled
-                                                    class="inputCreatedAt"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="text" value="{{ $user->updated_at }}" disabled
-                                                    class="inputUpdatedAt"
-                                                    style="background-color: transparent; border: none; color: black">
-                                            </td>
-                                            <td><input type="button" value="Update"
+                                            <td>{{ $user->updated_at }}
+                                            </td>  --}}
+                                            <td class="text-center"><input type="button" class="btn btn-primary" value="View"
+                                                    onclick="viewUser({{ $user->id }})"></td>
+                                            <td class="text-center"><input type="button" class="btn btn-secondary" value="Update"
                                                     onclick="sendUpdateUser({{ $user->id }})"></td>
-                                            <td><input type="button" value="Delete"
+                                            <td class="text-center"><input type="button" class="btn btn-danger" value="Delete"
                                                     onclick="deleteUser({{ $user->id }})"></td>
                                         </tr>
                                     @endforeach
@@ -212,6 +160,7 @@
 @include('includes.scripts')
 
 <script>
+
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -220,6 +169,10 @@
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+
+    function viewUser(id) {
+        window.location.href = '/viewUser/' + id;
+    }
 
     function deleteUser(id) {
 
@@ -272,6 +225,7 @@
         row.find('.inputCreatedBy').prop('disabled', false);
         row.find('.inputCreatedAt').prop('disabled', false);
         row.find('.inputUpdatedAt').prop('disabled', false);
+        
     }
 </script>
 

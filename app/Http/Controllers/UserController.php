@@ -19,6 +19,11 @@ class UserController extends Controller
     {
         return view('pages.addUser', ['roles' => roles::all()]);
     }
+    public function viewUserPage($id)
+    {
+        $users = users::where('id', $id)->first();
+        return view('pages.viewUser', ['users' => $users]);;
+    }
 
     public function insertUser(Request $request)
     {
