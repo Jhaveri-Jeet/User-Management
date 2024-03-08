@@ -2,16 +2,7 @@
 @include('includes.header')
 @include('includes.sidebar')
 
-@php
-    if (session('role') !== 'Admin') {
-        header('location: /');
-        exit();
-    }
-@endphp
-
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -29,7 +20,7 @@
         </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+    <!-- /.card-header -->
     <section class="content ">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
@@ -47,12 +38,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="selectRole">Select Role To Assign</label>
-                                        <select id="selectRole" class="form-control" autofocus>
-                                            @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label for="selectRole">Roles</label>
+                                        @foreach ($user_roles as $user_role)
+                                        <input type="text" disabled id="inputFirstName" value="{{ $user_role->role->name }}" class="form-control mb-2">
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -60,13 +49,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputFirstName">First Name</label>
-                                        <input type="text" id="inputFirstName" class="form-control">
+                                        <input type="text" disabled id="inputFirstName" value="{{ $users->first_name }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputLastName">Last Name</label>
-                                        <input type="text" id="inputLastName" class="form-control">
+                                        <input type="text" disabled id="inputLastName" value="{{ $users->last_name }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -74,13 +63,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputMobile">Mobile</label>
-                                        <input type="text" id="inputMobile" class="form-control">
+                                        <input type="text" disabled id="inputMobile" value="{{ $users->mobile }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputPassword">Password</label>
-                                        <input type="password" id="inputPassword" class="form-control">
+                                        <input type="password" disabled id="inputPassword" value="{{ $users->password }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -88,13 +77,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputNickName">Nick Name</label>
-                                        <input type="text" id="inputNickName" class="form-control">
+                                        <input type="text" disabled id="inputNickName" value="{{ $users->nick_name }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputAddress1">Address 1</label>
-                                        <input type="text" id="inputAddress1" class="form-control">
+                                        <input type="text" disabled id="inputAddress1" value="{{ $users->address_1 }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -102,13 +91,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputAddress2">Address 2</label>
-                                        <input type="text" id="inputAddress2" class="form-control">
+                                        <input type="text" disabled id="inputAddress2" value="{{ $users->address_2 }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputArea">Area</label>
-                                        <input type="text" id="inputArea" class="form-control">
+                                        <input type="text" disabled id="inputArea" value="{{ $users->area }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -116,13 +105,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputPincode">Pincode</label>
-                                        <input type="text" id="inputPincode" class="form-control">
+                                        <input type="text" disabled id="inputPincode" value="{{ $users->pincode }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputCity">City</label>
-                                        <input type="text" id="inputCity" class="form-control">
+                                        <input type="text" disabled id="inputCity" value="{{ $users->city }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -130,13 +119,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputState">State</label>
-                                        <input type="text" id="inputState" class="form-control">
+                                        <input type="text" disabled id="inputState" value="{{ $users->state }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputCountry">Country</label>
-                                        <input type="text" id="inputCountry" class="form-control">
+                                        <input type="text" disabled id="inputCountry" value="{{ $users->country }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -144,13 +133,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputEmail">Email</label>
-                                        <input type="email" id="inputEmail" class="form-control">
+                                        <input type="email" disabled id="inputEmail" value="{{ $users->email }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputSecondNumber">Second Number</label>
-                                        <input type="text" id="inputSecondNumber" class="form-control">
+                                        <input type="text" disabled id="inputSecondNumber" value="{{ $users->second_number }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -158,13 +147,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputBirthdate">Birthdate</label>
-                                        <input type="date" id="inputBirthdate" class="form-control">
+                                        <input type="date" disabled id="inputBirthdate" value="{{ $users->birthdate }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputAnniversaryDate">Anniversary Date</label>
-                                        <input type="date" id="inputAnniversaryDate" class="form-control">
+                                        <input type="date" disabled id="inputAnniversaryDate" value="{{ $users->anniversary_date }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -172,13 +161,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputSpouseFirstName">Spouse First Name</label>
-                                        <input type="text" id="inputSpouseFirstName" class="form-control">
+                                        <input type="text" disabled id="inputSpouseFirstName" value="{{ $users->spouse_first_name }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputSpouseLastName">Spouse Last Name</label>
-                                        <input type="text" id="inputSpouseLastName" class="form-control">
+                                        <input type="text" disabled id="inputSpouseLastName" value="{{ $users->spouse_last_name }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -186,13 +175,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputSpouseBirthdate">Spouse Birthdate</label>
-                                        <input type="date" id="inputSpouseBirthdate" class="form-control">
+                                        <input type="date" disabled id="inputSpouseBirthdate" value="{{ $users->spouse_birthdate }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputSpouseNickName">Spouse Nickname</label>
-                                        <input type="text" id="inputSpouseNickName" class="form-control">
+                                        <input type="text" disabled id="inputSpouseNickName" value="{{ $users->sopuse_nick_name }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -206,59 +195,10 @@
         <div class="row d-flex justify-content-center">
             <div class="col-10">
                 <a href="/users" class="btn btn-secondary">Cancel</a>
-                <input type="submit" value="Create new User" onclick="insertUser()"
-                    class="btn btn-success float-right">
+
             </div>
         </div>
     </section>
-    <!-- /.content -->
-    <br>
 </div>
-<!-- /.content-wrapper -->
-
 @include('includes.footer')
 @include('includes.scripts')
-
-<script>
-    function insertUser() {
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
-        let data = {
-            '_token': csrfToken,
-            'selectedRole': $('#selectRole').val(),
-            'firstName': $('#inputFirstName').val(),
-            'lastName': $('#inputLastName').val(),
-            'mobile': $('#inputMobile').val(),
-            'password': $('#inputPassword').val(),
-            'nickName': $('#inputNickName').val(),
-            'address1': $('#inputAddress1').val(),
-            'address2': $('#inputAddress2').val(),
-            'area': $('#inputArea').val(),
-            'pincode': $('#inputPincode').val(),
-            'city': $('#inputCity').val(),
-            'state': $('#inputState').val(),
-            'country': $('#inputCountry').val(),
-            'email': $('#inputEmail').val(),
-            'secondNumber': $('#inputSecondNumber').val(),
-            'birthdate': $('#inputBirthdate').val(),
-            'anniversaryDate': $('#inputAnniversaryDate').val(),
-            'spouseFirstName': $('#inputSpouseFirstName').val(),
-            'spouseLastName': $('#inputSpouseLastName').val(),
-            'spouseBirthdate': $('#inputSpouseBirthdate').val(),
-            'spouseNickName': $('#inputSpouseNickName').val(),
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/insertUser',
-            data: data,
-            dataType: 'json',
-            success: function(response) {
-                if (response['success'])
-                    window.location.href = '/users';
-                else
-                    window.location.href = '/addUser';
-            }
-        });
-    }
-</script>
-
-@include('includes.pageEnd')

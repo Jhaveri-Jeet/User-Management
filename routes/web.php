@@ -15,10 +15,11 @@ Route::middleware([UserAuth::class])->group(function () {
     Route::view('/volunteer', 'pages.volunteer');
     Route::view('/doner', 'pages.doner');
     Route::view('/renter', 'pages.renter');
-    
+
     // Users Routes
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/addUser', [UserController::class, 'addUserPage']);
+    Route::get('/viewUser/{id}', [UserController::class, 'viewUserPage']);
     Route::post('/insertUser', [UserController::class, 'insertUser']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 
