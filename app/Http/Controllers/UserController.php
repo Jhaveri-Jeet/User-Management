@@ -25,6 +25,12 @@ class UserController extends Controller
         $users = users::where('id', $id)->first();
         return view('pages.viewUser', ['user_roles' => $user_roles, 'users' => $users]);
     }
+    public function updateUserPage($id)
+    {
+        $user_roles = userRoles::where('user_id', $id)->get();
+        $users = users::where('id', $id)->first();
+        return view('pages.updateUser', ['user_roles' => $user_roles, 'users' => $users]);
+    }
 
     public function insertUser(Request $request)
     {

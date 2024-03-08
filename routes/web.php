@@ -21,6 +21,7 @@ Route::middleware([UserAuth::class])->group(function () {
     Route::get('/addUser', [UserController::class, 'addUserPage']);
     Route::get('/viewUser/{id}', [UserController::class, 'viewUserPage']);
     Route::post('/insertUser', [UserController::class, 'insertUser']);
+    Route::get('/updateUser/{id}', [UserController::class, 'updateUserPage']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 
     // Roles Routes

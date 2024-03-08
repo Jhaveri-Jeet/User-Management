@@ -49,7 +49,7 @@ exit();
                                         <th>Birthdate</th>
                                         <th>View</th>
                                         <th>Update</th>
-                                        <th>Delete</th>  
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -123,35 +123,7 @@ exit();
     }
 
     function sendUpdateUser(id) {
-        var row = $('#updateUserRow_' + id);
-
-        row.find('.inputFirstName').prop('disabled', false).focus();
-        row.find('.inputLastName').prop('disabled', false);
-        row.find('.inputNickName').prop('disabled', false);
-        row.find('.inputAddress1').prop('disabled', false);
-        row.find('.inputAddress2').prop('disabled', false);
-        row.find('.inputArea').prop('disabled', false);
-        row.find('.inputPincode').prop('disabled', false);
-        row.find('.inputCity').prop('disabled', false);
-        row.find('.inputState').prop('disabled', false);
-        row.find('.inputCountry').prop('disabled', false);
-        row.find('.inputEmail').prop('disabled', false);
-        row.find('.inputSecondNumber').prop('disabled', false);
-        row.find('.inputBirthdate').prop('disabled', false);
-        row.find('.inputAnniversaryDate').prop('disabled', false);
-        row.find('.inputSpouseFirstName').prop('disabled', false);
-        row.find('.inputSpouseLastName').prop('disabled', false);
-        row.find('.inputSpouseBirthdate').prop('disabled', false);
-        row.find('.inputSpouseNickName').prop('disabled', false);
-        row.find('.inputMobileVerified').prop('disabled', false);
-        row.find('.inputEmailVerified').prop('disabled', false);
-        row.find('.inputUserStatus').prop('disabled', false);
-        row.find('.inputOptinStatus').prop('disabled', false);
-        row.find('.inputReferenceBy').prop('disabled', false);
-        row.find('.inputCreatedBy').prop('disabled', false);
-        row.find('.inputCreatedAt').prop('disabled', false);
-        row.find('.inputUpdatedAt').prop('disabled', false);
-
+        window.location.href = '/updateUser/' + id;
     }
 
 </script>
