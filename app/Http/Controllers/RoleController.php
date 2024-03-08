@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\roles;
+use App\Models\userRoles;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Models\users;
 
 class RoleController extends Controller
 {
     public function index()
     {
         return view('pages.roles', ['roles' => roles::all()]);
+    }
+    public function assignedRoles()
+    {
+        
+        return view('pages.assignedRoles', ['allUsers' => users::all(), 'userroles' => userRoles::all()]); 
     }
 
     public function insertRole(Request $request)

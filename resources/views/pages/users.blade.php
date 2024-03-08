@@ -53,14 +53,14 @@ exit();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($allUsers as $user)
                                     <tr id="updateUserRow_{{ $user->id }}">
                                         <td>{{ $loop->index + 1 }}
                                         </td>
-                                        <td>{{ $user->user->first_name. "  " .$user->user->last_name }}</td>
-                                        <td>{{ $user->user->email }}
+                                        <td>{{ $user->first_name. "  " .$user->last_name }}</td>
+                                        <td>{{ $user->email }}
                                         </td>
-                                        <td>{{ $user->user->birthdate }}
+                                        <td>{{ $user->birthdate }}
                                         </td>
                                         <td class="text-center"><input type="button" class="btn btn-primary" value="View" onclick="viewUser({{ $user->id }})"></td>
                                         <td class="text-center"><input type="button" class="btn btn-secondary" value="Update" onclick="sendUpdateUser({{ $user->id }})"></td>
@@ -89,10 +89,10 @@ exit();
 <script>
     $(function() {
         $("#example1").DataTable({
-            "responsive": true
-            , "lengthChange": false
-            , "autoWidth": false
-            , "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 
@@ -105,13 +105,13 @@ exit();
         if (confirm('Are you sure you want to delete this user?')) {
             let csrfToken = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                type: 'DELETE'
-                , url: '/deleteUser/' + id
-                , data: {
-                    '_token': csrfToken
-                , }
-                , dataType: 'json'
-                , success: function(response) {
+                type: 'DELETE',
+                url: '/deleteUser/' + id,
+                data: {
+                    '_token': csrfToken,
+                },
+                dataType: 'json',
+                success: function(response) {
                     console.log(response);
                     if (response['success'])
                         window.location.href = '/users';
@@ -125,7 +125,6 @@ exit();
     function sendUpdateUser(id) {
         window.location.href = '/updateUser/' + id;
     }
-
 </script>
 
 @include('includes.pageEnd')

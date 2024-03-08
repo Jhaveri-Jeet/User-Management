@@ -11,6 +11,7 @@ Route::middleware([UserAuth::class])->group(function () {
     // Pages Routes
     Route::view('/', 'index');
     Route::view('/addRole', 'pages.addRole');
+    Route::view('/assignedRoles', 'pages.assignedRoles');
     Route::view('/manager', 'pages.manager');
     Route::view('/volunteer', 'pages.volunteer');
     Route::view('/doner', 'pages.doner');
@@ -22,13 +23,16 @@ Route::middleware([UserAuth::class])->group(function () {
     Route::get('/viewUser/{id}', [UserController::class, 'viewUserPage']);
     Route::post('/insertUser', [UserController::class, 'insertUser']);
     Route::get('/updateUser/{id}', [UserController::class, 'updateUserPage']);
+    Route::put('/updateUserData/{id}', [UserController::class, 'updateUserData']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 
     // Roles Routes
     Route::get('/roles', [RoleController::class, 'index']);
+    Route::get('/assignedRoles', [RoleController::class, 'assignedRoles']);
     Route::post('/insertRole', [RoleController::class, 'insertRole']);
     Route::put('/updateRole/{id}', [RoleController::class, 'updateRole']);
     Route::delete('/deleteRole/{id}', [RoleController::class, 'deleteRole']);
+    
 });
 
 // Auth Routes
