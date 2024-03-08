@@ -48,28 +48,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputFirstName">First Name</label>
-                                        <input type="text" disabled id="inputFirstName" value="{{ $users->first_name }}" class="form-control">
+                                        <label for="inputFirstName">Full Name</label>
+                                        <input type="text" disabled id="inputFirstName" value="{{ $users->first_name . ' ' . $users->last_name  }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputLastName">Last Name</label>
-                                        <input type="text" disabled id="inputLastName" value="{{ $users->last_name }}" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="inputMobile">Mobile</label>
-                                        <input type="text" disabled id="inputMobile" value="{{ $users->mobile }}" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="inputPassword">Password</label>
-                                        <input type="password" disabled id="inputPassword" value="{{ $users->password }}" class="form-control">
+                                        <label for="inputLastName">Mobile Number</label>
+                                        <input type="text" disabled id="inputLastName" value="{{ $users->mobile }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
