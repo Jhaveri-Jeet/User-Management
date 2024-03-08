@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.users', ['users' => userRoles::all(), 'allUsers' => users::all()]);
+        return view('pages.users', ['allUsers' => users::all()]);
     }
 
     public function addUserPage()
@@ -31,6 +31,8 @@ class UserController extends Controller
         $users = users::where('id', $id)->first();
         return view('pages.updateUser', ['user_roles' => $user_roles, 'users' => $users]);
     }
+
+
 
     public function insertUser(Request $request)
     {
@@ -70,6 +72,32 @@ class UserController extends Controller
             return response()->json(['success' => 'User created successfully'], JsonResponse::HTTP_CREATED);
         } else
             return response()->json(['error' => 'Failed to create user'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    public function updateUserData(Request $request, $id){
+        $users = users::where('id', $id)->first();
+        $users->first_name = $request->firstName;
+        $users->last_name = $request->lastName;
+        $users->nick_name = $request->nickName;
+        $users->mobile = $request->mobile;
+        $users->address_1 = $request->address1;
+        $users->address_2 = $request->address2;
+        $users->area = $request->area;
+        $users->pincode = $request->pincode;
+        $users->city = $request->city;
+        $users->state = $request->state;
+        $users->country = $request->country;
+        $users->email = $request->email;
+        $users->second_number = $request->secondNumber;
+        $users->birthdate = $request->birthdate;
+        $users->anniversary_date = $request->anniversaryDate;
+        $users->spouse_first_name = $request->spouseFirstName;
+        $users->spouse_last_name = $request->spouseLastName;
+        $users->spouse_birthdate = $request->spouseBirthdate;
+        $users->sopuse_nick_name = $request->spouseNickName;
+        $users->save();
+        return response()->json(['success' => 'User updated successfully'], JsonResponse::HTTP_OK);
+
     }
 
     public function deleteUser($id)

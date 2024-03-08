@@ -52,6 +52,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/assignedRoles" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Assigned Roles
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 @if (session('role') == 'Manager')
                     <li class="nav-item">
