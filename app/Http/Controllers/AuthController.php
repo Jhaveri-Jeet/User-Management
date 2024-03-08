@@ -11,12 +11,16 @@ class AuthController extends Controller
 {
     public function checkUser(Request $request)
     {
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return response()->json(['error' => 'Unauthorized'], JsonResponse::HTTP_ACCEPTED);
+        }
 
-        $userRole = userRoles::with('role')->where('user_id', Auth::user()->id)->first();
-        session(['role' => $userRole->role->name]);
-        return response()->json(['success' => 'Authorized'], JsonResponse::HTTP_OK);;
+        $userRoles = userRoles::with('role')->where('user_id', Auth::user()->id)->get();
+        $roleNames = $userRoles->pluck('role.name')->toArray(); 
+
+        session(['role' => $roleNames]);
+
+        return response()->json(['success' => 'Authorized'], JsonResponse::HTTP_OK);
     }
 
     public function logout()

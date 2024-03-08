@@ -3,7 +3,8 @@
 @include('includes.sidebar')
 
 @php
-    if (session('role') !== 'Renter') {
+    $role = session('role', []);
+    if (!in_array('Renter', $role)) {
         header('location: /');
         exit();
     }

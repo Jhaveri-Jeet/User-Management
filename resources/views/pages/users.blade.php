@@ -3,10 +3,11 @@
 @include('includes.sidebar')
 
 @php
-if (session('role') !== 'Admin') {
-header('location: /');
-exit();
-}
+    $role = session('role', []);
+    if (!in_array('Admin', $role)) {
+        header('location: /');
+        exit();
+    }
 @endphp
 
 <!-- Content Wrapper. Contains page content -->
@@ -54,18 +55,21 @@ exit();
                                 </thead>
                                 <tbody>
                                     @foreach ($allUsers as $user)
-                                    <tr id="updateUserRow_{{ $user->id }}">
-                                        <td>{{ $loop->index + 1 }}
-                                        </td>
-                                        <td>{{ $user->first_name. "  " .$user->last_name }}</td>
-                                        <td>{{ $user->email }}
-                                        </td>
-                                        <td>{{ $user->birthdate }}
-                                        </td>
-                                        <td class="text-center"><input type="button" class="btn btn-primary" value="View" onclick="viewUser({{ $user->id }})"></td>
-                                        <td class="text-center"><input type="button" class="btn btn-secondary" value="Update" onclick="sendUpdateUser({{ $user->id }})"></td>
-                                        <td class="text-center"><input type="button" class="btn btn-danger" value="Delete" onclick="deleteUser({{ $user->id }})"></td>
-                                    </tr>
+                                        <tr id="updateUserRow_{{ $user->id }}">
+                                            <td>{{ $loop->index + 1 }}
+                                            </td>
+                                            <td>{{ $user->first_name . '  ' . $user->last_name }}</td>
+                                            <td>{{ $user->email }}
+                                            </td>
+                                            <td>{{ $user->birthdate }}
+                                            </td>
+                                            <td class="text-center"><input type="button" class="btn btn-primary"
+                                                    value="View" onclick="viewUser({{ $user->id }})"></td>
+                                            <td class="text-center"><input type="button" class="btn btn-secondary"
+                                                    value="Update" onclick="sendUpdateUser({{ $user->id }})"></td>
+                                            <td class="text-center"><input type="button" class="btn btn-danger"
+                                                    value="Delete" onclick="deleteUser({{ $user->id }})"></td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

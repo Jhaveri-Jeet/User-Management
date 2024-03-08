@@ -2,7 +2,10 @@
 @include('includes.header')
 @include('includes.sidebar')
 
-@if (session('role') == 'Admin')
+@php
+    $role = session('role', []);
+@endphp
+@if (in_array('Admin', $role))
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">

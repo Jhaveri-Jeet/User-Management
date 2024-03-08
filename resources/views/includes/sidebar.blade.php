@@ -27,7 +27,11 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                @if (session('role') == 'Admin')
+                @php
+                    $role = session('role', []);
+                @endphp
+
+                @if (in_array('Admin', $role))
                     <li class="nav-item">
                         <a href="/" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -61,7 +65,8 @@
                         </a>
                     </li>
                 @endif
-                @if (session('role') == 'Manager')
+
+                @if (in_array('Manager', $role))
                     <li class="nav-item">
                         <a href="/manager" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -71,7 +76,8 @@
                         </a>
                     </li>
                 @endif
-                @if (session('role') == 'Volunteer')
+
+                @if (in_array('Volunteer', $role))
                     <li class="nav-item">
                         <a href="/volunteer" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -81,7 +87,8 @@
                         </a>
                     </li>
                 @endif
-                @if (session('role') == 'Doner')
+
+                @if (in_array('Doner', $role))
                     <li class="nav-item">
                         <a href="/doner" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -91,7 +98,8 @@
                         </a>
                     </li>
                 @endif
-                @if (session('role') == 'Renter')
+
+                @if (in_array('Renter', $role))
                     <li class="nav-item">
                         <a href="/renter" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -101,6 +109,7 @@
                         </a>
                     </li>
                 @endif
+
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -111,5 +120,6 @@
                 </li>
             </ul>
         </nav>
+
     </div>
 </aside>

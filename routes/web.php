@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignRoleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -28,13 +29,14 @@ Route::middleware([UserAuth::class])->group(function () {
 
     // Roles Routes
     Route::get('/roles', [RoleController::class, 'index']);
-    Route::get('/assignedRoles', [RoleController::class, 'assignedRoles']);
-    Route::get('/unassignedUserRole/{userId}/{roleId}', [RoleController::class, 'unassignedUserRole']);
-    Route::get('/assignedUserRole/{userId}/{roleId}', [RoleController::class, 'assignedUserRole']);
     Route::post('/insertRole', [RoleController::class, 'insertRole']);
     Route::put('/updateRole/{id}', [RoleController::class, 'updateRole']);
     Route::delete('/deleteRole/{id}', [RoleController::class, 'deleteRole']);
-    
+
+    // Assign Role Routes
+    Route::get('/assignedRoles', [AssignRoleController::class, 'assignedRoles']);
+    Route::get('/unassignedUserRole/{userId}/{roleId}', [AssignRoleController::class, 'unassignedUserRole']);
+    Route::get('/assignedUserRole/{userId}/{roleId}', [AssignRoleController::class, 'assignedUserRole']);
 });
 
 // Auth Routes
