@@ -1,125 +1,204 @@
 @include('includes.styles')
 @include('includes.header')
+@include('includes.sidebar')
 
- <section class="content">
+<div class="content-wrapper">
+    <section class="content-header">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">All userss with its roles</h3>
-                            <a href="/addusers" class="btn btn-dark float-right">Add users</a>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example1" class="table table-responsive-sm table-bordered table-striped table-responsive ">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                          <th>Last Name</th>  
-                                          <th>Nick Name</th>  
-                                          <th>Address 1</th>  
-                                          <th>Address 2</th>
-                                        <th>Area</th>
-                                        <th>Pincode</th>  
-                                          <th>City</th> 
-                                          <th>State</th>  
-                                          <th>Country</th>  
-                                        <th>Email</th>
-                                         <th>Second Number</th>  
-                                        <th>Birthdate</th>
-                                          <th>Anniversary Date</th> 
-                                          <th>Spouse First Name</th>
-                                        <th>Spouse Last Name</th>
-                                        <th>Spouse Birthdate</th>
-                                        <th>Spouse Nickname</th>
-                                        <th>Mobile Verified</th>
-                                        <th>Email Verified</th>  
-                                          <th>users Status</th>
-                                        <th>Optin Status</th>  
-                                          <th>Reference By</th> 
-                                          <th>Created By</th> 
-                                          <th>Created At</th> 
-                                          <th>Updated At</th> 
-                                        <th colspan="2" class="text-center">Actions</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                <tr id="updateUserRow_{{ $users->id }}">
-                                            <td>{{ $users->id }}
-                                            </td>
-                                            <td>{{ $users->first_name. "  " .$users->last_name }}</td>
-                                            </td>
-                                              <td>{{ $users->last_name }}  
-                                            </td>
-                                              <td>{{ $users->nick_name }}
-                                            </td>  
-                                              <td>{{ $users->address_1 }}
-                                            </td>  
-                                              <td>{{ $users->address_2 }}
-                                            </td>
-                                            <td>{{ $users->area }}
-                                            </td>
-                                            <td>{{ $users->pincode }}  
-                                              </td>  
-                                              <td>{{ $users->city }}
-                                            </td>  
-                                              <td>{{ $users->state }}
-                                            </td>
-                                            <td>{{ $users->country }}
-                                            </td>  
-                                            <td>{{ $users->email }}
-                                            </td>
-                                              <td>{{ $users->second_number }}
-                                            </td>  
-                                            <td>{{ $users->birthdate }}
-                                            </td>
-                                             <td>{{ $users->anniversary_date }}
-                                            </td>
-                                            <td>{{ $users->spouse_first_name }}
-                                            </td>
-                                            <td>{{ $users->spouse_last_name }}
-                                            </td>
-                                            <td>{{ $users->spouse_birthdate }}
-                                            </td>
-                                            <td>{{ $users->spouse_nick_name }}
-                                            </td>
-                                            <td>{{ $users->mobile_verified }}
-                                            </td>
-                                            <td>{{ $users->email_verified }}
-                                            </td>  
-                                             <td>{{ $users->users_status }}
-                                            </td>
-                                            <td>{{ $users->optin_status }}
-                                            </td>  
-                                            <td>{{ $users->reference_by }}
-                                            </td>
-                                            <td>{{ $users->created_by }}
-                                            </td>
-                                            <td>{{ $users->created_at }}
-                                            </td>
-                                            <td>{{ $users->updated_at }}
-                                            </td>  
-                                           
-                                            <td class="text-center"><input type="button" class="btn btn-secondary" value="Update"
-                                                    onclick="sendUpdateusers({{ $users->id }})"></td>
-                                            <td class="text-center"><input type="button" class="btn btn-danger" value="Delete"
-                                                    onclick="deleteusers({{ $users->id }})"></td>
-                                        </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>User Add</h1>
                 </div>
-                <!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/users">Users</a></li>
+                        <li class="breadcrumb-item active">User Add</li>
+                    </ol>
+                </div>
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
     </section>
+
+    <!-- /.card-header -->
+    <section class="content ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">General</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="selectRole">Roles</label>
+                                        @foreach ($user_roles as $user_role)
+                                        <input type="text" disabled id="inputFirstName" value="{{ $user_role->role->name }}" class="form-control mb-2">
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputFirstName">First Name</label>
+                                        <input type="text" disabled id="inputFirstName" value="{{ $users->first_name }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputLastName">Last Name</label>
+                                        <input type="text" disabled id="inputLastName" value="{{ $users->last_name }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputMobile">Mobile</label>
+                                        <input type="text" disabled id="inputMobile" value="{{ $users->mobile }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputPassword">Password</label>
+                                        <input type="password" disabled id="inputPassword" value="{{ $users->password }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputNickName">Nick Name</label>
+                                        <input type="text" disabled id="inputNickName" value="{{ $users->nick_name }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputAddress1">Address 1</label>
+                                        <input type="text" disabled id="inputAddress1" value="{{ $users->address_1 }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputAddress2">Address 2</label>
+                                        <input type="text" disabled id="inputAddress2" value="{{ $users->address_2 }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputArea">Area</label>
+                                        <input type="text" disabled id="inputArea" value="{{ $users->area }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputPincode">Pincode</label>
+                                        <input type="text" disabled id="inputPincode" value="{{ $users->pincode }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputCity">City</label>
+                                        <input type="text" disabled id="inputCity" value="{{ $users->city }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputState">State</label>
+                                        <input type="text" disabled id="inputState" value="{{ $users->state }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputCountry">Country</label>
+                                        <input type="text" disabled id="inputCountry" value="{{ $users->country }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail">Email</label>
+                                        <input type="email" disabled id="inputEmail" value="{{ $users->email }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputSecondNumber">Second Number</label>
+                                        <input type="text" disabled id="inputSecondNumber" value="{{ $users->second_number }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputBirthdate">Birthdate</label>
+                                        <input type="date" disabled id="inputBirthdate" value="{{ $users->birthdate }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputAnniversaryDate">Anniversary Date</label>
+                                        <input type="date" disabled id="inputAnniversaryDate" value="{{ $users->anniversary_date }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputSpouseFirstName">Spouse First Name</label>
+                                        <input type="text" disabled id="inputSpouseFirstName" value="{{ $users->spouse_first_name }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputSpouseLastName">Spouse Last Name</label>
+                                        <input type="text" disabled id="inputSpouseLastName" value="{{ $users->spouse_last_name }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputSpouseBirthdate">Spouse Birthdate</label>
+                                        <input type="date" disabled id="inputSpouseBirthdate" value="{{ $users->spouse_birthdate }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputSpouseNickName">Spouse Nickname</label>
+                                        <input type="text" disabled id="inputSpouseNickName" value="{{ $users->sopuse_nick_name }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-10">
+                <a href="/users" class="btn btn-secondary">Cancel</a>
+
+            </div>
+        </div>
+    </section>
+</div>
+@include('includes.footer')
+@include('includes.scripts')

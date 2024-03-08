@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="selectRole">First Name</label>
+                                        <label for="selectRole">Select Role To Assign</label>
                                         <select id="selectRole" class="form-control" autofocus>
                                             @foreach ($roles as $role)
                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>

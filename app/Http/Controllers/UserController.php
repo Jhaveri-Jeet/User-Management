@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.users', ['users' => users::all()]);
+        return view('pages.users', ['users' => userRoles::all(), 'allUsers' => users::all()]);
     }
 
     public function addUserPage()
@@ -21,8 +21,9 @@ class UserController extends Controller
     }
     public function viewUserPage($id)
     {
+        $user_roles = userRoles::where('user_id', $id)->get();
         $users = users::where('id', $id)->first();
-        return view('pages.viewUser', ['users' => $users]);;
+        return view('pages.viewUser', ['user_roles' => $user_roles, 'users' => $users]);
     }
 
     public function insertUser(Request $request)

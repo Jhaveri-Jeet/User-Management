@@ -3,10 +3,10 @@
 @include('includes.sidebar')
 
 @php
-    if (session('role') !== 'Admin') {
-        header('location: /');
-        exit();
-    }
+if (session('role') !== 'Admin') {
+header('location: /');
+exit();
+}
 @endphp
 
 <!-- Content Wrapper. Contains page content -->
@@ -45,101 +45,28 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        {{--  <th>Last Name</th>  --}}
-                                        {{--  <th>Nick Name</th>  --}}
-                                        {{--  <th>Address 1</th>  --}}
-                                        {{--  <th>Address 2</th>
-                                        <th>Area</th>
-                                        <th>Pincode</th>  --}}
-                                        {{--  <th>City</th>  --}}
-                                        {{--  <th>State</th>  --}}
-                                        {{--  <th>Country</th>  --}}
                                         <th>Email</th>
-                                        {{--  <th>Second Number</th>  --}}
                                         <th>Birthdate</th>
-                                        {{--  <th>Anniversary Date</th>  --}}
-                                        {{--  <th>Spouse First Name</th>
-                                        <th>Spouse Last Name</th>
-                                        <th>Spouse Birthdate</th>
-                                        <th>Spouse Nickname</th>
-                                        <th>Mobile Verified</th>
-                                        <th>Email Verified</th>  --}}
-                                        {{--  <th>User Status</th>
-                                        <th>Optin Status</th>  --}}
-                                        {{--  <th>Reference By</th>  --}}
-                                        {{--  <th>Created By</th>  --}}
-                                        {{--  <th>Created At</th>  --}}
-                                        {{--  <th>Updated At</th>  --}}
-                                        <th colspan="3" class="text-center">Actions</th>
-                                        
+                                        <th>View</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>  
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                        <tr id="updateUserRow_{{ $user->id }}">
-                                            <td>{{ $user->id }}
-                                            </td>
-                                            <td>{{ $user->first_name. "  " .$user->last_name }}</td>
-                                            </td>
-                                            {{--  <td>{{ $user->last_name }}  --}}
-                                            </td>
-                                            {{--  <td>{{ $user->nick_name }}
-                                            </td>  --}}
-                                            {{--  <td>{{ $user->address_1 }}
-                                            </td>  --}}
-                                            {{--  <td>{{ $user->address_2 }}
-                                            </td>
-                                            <td>{{ $user->area }}
-                                            </td>
-                                            <td>{{ $user->pincode }}  --}}
-                                            {{--  </td>  --}}
-                                            {{--  <td>{{ $user->city }}
-                                            </td>  --}}
-                                            {{--  <td>{{ $user->state }}
-                                            </td>
-                                            <td>{{ $user->country }}
-                                            </td>  --}}
-                                            <td>{{ $user->email }}
-                                            </td>
-                                            {{--  <td>{{ $user->second_number }}
-                                            </td>  --}}
-                                            <td>{{ $user->birthdate }}
-                                            </td>
-                                            {{--  <td>{{ $user->anniversary_date }}
-                                            </td>
-                                            <td>{{ $user->spouse_first_name }}
-                                            </td>
-                                            <td>{{ $user->spouse_last_name }}
-                                            </td>
-                                            <td>{{ $user->spouse_birthdate }}
-                                            </td>
-                                            <td>{{ $user->spouse_nick_name }}
-                                            </td>
-                                            <td>{{ $user->mobile_verified }}
-                                            </td>
-                                            <td{{ $user->email_verified }}
-                                            </td>  --}}
-                                            {{--  <td>{{ $user->user_status }}
-                                            </td>
-                                            <td>{{ $user->optin_status }}
-                                            </td>  --}}
-                                            {{--  <td>{{ $user->reference_by }}
-                                            </td>
-                                            <td>{{ $user->created_by }}
-                                            </td>
-                                            <td>{{ $user->created_at }}
-                                            </td>
-                                            <td>{{ $user->updated_at }}
-                                            </td>  --}}
-                                            <td class="text-center"><input type="button" class="btn btn-primary" value="View"
-                                                    onclick="viewUser({{ $user->id }})"></td>
-                                            <td class="text-center"><input type="button" class="btn btn-secondary" value="Update"
-                                                    onclick="sendUpdateUser({{ $user->id }})"></td>
-                                            <td class="text-center"><input type="button" class="btn btn-danger" value="Delete"
-                                                    onclick="deleteUser({{ $user->id }})"></td>
-                                        </tr>
+                                    <tr id="updateUserRow_{{ $user->id }}">
+                                        <td>{{ $loop->index + 1 }}
+                                        </td>
+                                        <td>{{ $user->user->first_name. "  " .$user->user->last_name }}</td>
+                                        <td>{{ $user->user->email }}
+                                        </td>
+                                        <td>{{ $user->user->birthdate }}
+                                        </td>
+                                        <td class="text-center"><input type="button" class="btn btn-primary" value="View" onclick="viewUser({{ $user->id }})"></td>
+                                        <td class="text-center"><input type="button" class="btn btn-secondary" value="Update" onclick="sendUpdateUser({{ $user->id }})"></td>
+                                        <td class="text-center"><input type="button" class="btn btn-danger" value="Delete" onclick="deleteUser({{ $user->id }})"></td>
+                                    </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -160,13 +87,12 @@
 @include('includes.scripts')
 
 <script>
-
     $(function() {
         $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "responsive": true
+            , "lengthChange": false
+            , "autoWidth": false
+            , "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 
@@ -179,13 +105,13 @@
         if (confirm('Are you sure you want to delete this user?')) {
             let csrfToken = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                type: 'DELETE',
-                url: '/deleteUser/' + id,
-                data: {
-                    '_token': csrfToken,
-                },
-                dataType: 'json',
-                success: function(response) {
+                type: 'DELETE'
+                , url: '/deleteUser/' + id
+                , data: {
+                    '_token': csrfToken
+                , }
+                , dataType: 'json'
+                , success: function(response) {
                     console.log(response);
                     if (response['success'])
                         window.location.href = '/users';
@@ -225,8 +151,9 @@
         row.find('.inputCreatedBy').prop('disabled', false);
         row.find('.inputCreatedAt').prop('disabled', false);
         row.find('.inputUpdatedAt').prop('disabled', false);
-        
+
     }
+
 </script>
 
 @include('includes.pageEnd')
